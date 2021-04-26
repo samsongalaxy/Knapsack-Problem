@@ -57,7 +57,7 @@ void Knapsack::greedy1(){
     knapsack_vec[i] = temp;
   }
   cout << "Printing knapsack_vec in descending order:\n";
-  for(int i = 0; i < knapsack_vec.size(); i++) cout << knapsack_vec[i] << "\n";
+  for(int i = 0; i < knapsack_vec.size(); i++) cout << knapsack_vec[i].price << " " << knapsack_vec[i].weight << "\n";
   int current_weight = 0, current_profit = 0;
   for(int i = 0; i < knapsack_vec.size(); i++){
     if((current_weight + knapsack_vec[i].weight) <= capacity){
