@@ -16,6 +16,7 @@ Knapsack::Knapsack(){
   location = 0;
   profit_weight_ratio = 0;
   maxprofit = 0;
+  numbest = 0;
 }
 
 void Knapsack::openFile(string fn){
@@ -45,18 +46,14 @@ void Knapsack::clearVec(){
 }
 
 void Knapsack::greedy1(int will_print){
-  /*cout << "Printing knapsack_vec:\n";
-  for(int i = 0; i < knapsack_vec.size(); i++) cout << knapsack_vec[i].profit << " " << knapsack_vec[i].weight << "\n";*/
   clock_t start = clock();
   int swap;
-  vec_to_print.clear();
+  bestset.clear();
   Knapsack temp;
   for(int i = 0; i < knapsack_vec.size(); i++){
     temp = knapsack_vec[i];
     swap = i;
     for(int j = i + 1; j < knapsack_vec.size(); j++){
-      /*cout << "First value to be compared: " << temp.profit_weight_ratio << "\n";
-      cout << "Second value to be compared: " << knapsack_vec[j].profit_weight_ratio << "\n";*/
         if(temp.profit_weight_ratio < knapsack_vec[j].profit_weight_ratio){
           temp = knapsack_vec[j];
           swap = j;
@@ -67,22 +64,20 @@ void Knapsack::greedy1(int will_print){
       knapsack_vec[i] = temp;
     }
   }
-  /*cout << "Printing knapsack_vec in descending order:\n";
-  for(int i = 0; i < knapsack_vec.size(); i++) cout << knapsack_vec[i].profit << " " << knapsack_vec[i].weight << "\n";*/
   int current_weight = 0;
   maxprofit = 0;
   for(int i = 0; i < knapsack_vec.size(); i++){
     if((current_weight + knapsack_vec[i].weight) <= capacity){
       current_weight += knapsack_vec[i].weight;
       maxprofit += knapsack_vec[i].profit;
-      vec_to_print.push_back(knapsack_vec[i].location);
+      bestset.push_back(knapsack_vec[i].location);
     }
   }
   if(will_print == 1){
     ofstream fout;
     fout.open(fileName, ios::app);
     fout << num_of_items << " " << maxprofit << " " << (double)clock()-start;
-    for(int i = 0; i < vec_to_print.size(); i++) fout << " " << vec_to_print[i];
+    for(int i = 0; i < bestset.size(); i++) fout << " " << bestset[i];
     fout << "\n";
     fout.close();
   }
@@ -97,7 +92,7 @@ void Knapsack::greedy2(int will_print){
     fout.open(fileName, ios::app);
     if(maxprofit > pmax.profit){
       fout << num_of_items << " " << maxprofit << " " << (double)clock()-start;
-      for(int i = 0; i < vec_to_print.size(); i++) fout << " " << vec_to_print[i];
+      for(int i = 0; i < bestset.size(); i++) fout << " " << bestset[i];
       fout << "\n";
     }
     else{
@@ -115,7 +110,52 @@ void Knapsack::backtracking(){
   clock_t start = clock();
   ofstream fout;
   fout.open(fileName, ios::app);
-
-
+  numbest = 0;
+  for(int i = 0; i < num_of_items + 1; i++) include.push_back("no");
+  bt_helper(0, 0, 0);
+  fout << num_of_items << " " << maxprofit << " " << (double)clock()-start;
+  for(int i = 0; i < bestset.size(); i++) fout << " " << bestset[i];
+  fout << "\n";
   fout.close();
+}
+
+void Knapsack::bt_helper(int i, int curr_weight, int curr_profit){
+  if((curr_weight <= capacity) && (curr_profit > maxprofit)){
+    maxprofit = curr_profit;
+    numbest = i;
+    bestset.clear();
+    for(int j = 0; j < include.size(); i++) if(include[j] == "yes") bestset.push_back(knapsack_vec[j].location);
+  }
+  if(promising(i, curr_weight, curr_profit)){
+    include[i+1] = "yes";
+    bt_helper(i+1, curr_weight + knapsack_vec[i+1].weight, curr_profit + knapsack_vec[i].profit);
+    include[i+1] = "no";
+    bt_helper(i+1, curr_weight, curr_profit);
+  }
+}
+
+double Knapsack::KWF2(int i, int curr_weight, int curr_profit){
+  double bound = curr_profit;
+  int x[num_of_items];
+  for(int j = i; i < num_of_items; i++) x[j] = 0;
+  while((curr_weight < capacity) && (i <= num_of_items)){
+    if((curr_weight + knapsack_vec[i].weight) <= capacity){
+      x[i] = 1;
+      curr_weight += knapsack_vec[i].weight;
+      bound += knapsack_vec[i].profit;
+    }
+    else{
+      x[i] = (capacity - curr_weight)/knapsack_vec[i].weight;
+      curr_weight = capacity;
+      bound = bound + knapsack_vec[i].profit * knapsack_vec[i].weight;
+    }
+    i++;
+  }
+  return bound;
+}
+
+boolean Knapsack::promising(int i, int curr_weight, int curr_profit){
+  if(curr_weight >= capacity) return false;
+  double bound = KWF2(i, curr_weight, curr_profit);
+  return (bound > maxprofit);
 }
