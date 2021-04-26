@@ -51,9 +51,10 @@ void Knapsack::greedy1(){
   fout.open(fileName, ios::app);
   int swap;
   vector<int> vec_to_print;
+  Knapsack temp;
   cout << "1\n";
   for(int i = 0; i < knapsack_vec.size(); i++){
-    Knapsack temp = knapsack_vec[i];
+    temp = knapsack_vec[i];
     cout << "2\n";
     for(int j = i + 1; j < knapsack_vec.size(); j++){
       cout << "First value to be compared: " << temp.profit_weight_ratio << "\n";
