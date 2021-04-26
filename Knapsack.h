@@ -15,12 +15,14 @@ class Knapsack{
     void setCapacity(int n, int c);
     void addItem(double w, double p, int l);
     void clearVec();
-    void greedy1();
-    void greedy2();
-    int num_of_items, capacity, profit, weight, location;
+    void greedy1(will_print);
+    void greedy2(int will_print);
+    void backtracking();
+    int num_of_items, capacity, profit, weight, location, maxprofit;
     double profit_weight_ratio;
     std::vector<Knapsack> knapsack_vec;
     std::string fileName;
+    std::vector<int> vec_to_print;
 };
 
 #endif
