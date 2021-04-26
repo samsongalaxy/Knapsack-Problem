@@ -32,7 +32,7 @@ void Knapsack::addItem(int w, int p){
   Knapsack k;
   k.weight = w;
   k.price = p;
-  knapsack_vec.pushback(k);
+  knapsack_vec.push_back(k);
 }
 
 void Knapsack::clearVec(){
@@ -53,7 +53,7 @@ void Knapsack::greedy1(){
           swap = j;
         }
     }
-    knapsack_vec[j] = knapsack_vec[i];
+    knapsack_vec[swap] = knapsack_vec[i];
     knapsack_vec[i] = temp;
   }
   int current_weight = 0, current_profit = 0;
@@ -61,7 +61,7 @@ void Knapsack::greedy1(){
     if((current_weight + knapsack_vec[i].weight) <= capacity){
       current_weight += knapsack_vec[i].weight;
       current_profit += knapsack_vec[i].price;
-      vec_to_print.pushback(i);
+      vec_to_print.push_back(i);
     }
   }
   fout << num_of_items << " " << current_profit << " " << ((double)clock()-start)/(double)CLOCKS_PER_SEC;
