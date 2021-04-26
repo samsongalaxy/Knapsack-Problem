@@ -22,11 +22,11 @@ int main(int argc, char **argv){
     int n, c;
     string temp;
     stringstream ss;
-    ss.clear()
+    ss.clear();
     getline(fin, temp, ' ');
     ss.str(temp);
     ss >> n;
-    ss.clear()
+    ss.clear();
     getline(fin, temp, '\n');
     ss.str(temp);
     ss >> c;
@@ -37,11 +37,11 @@ int main(int argc, char **argv){
       getline(fin, temp, ' ');
       ss.str(temp);
       ss >> w;
-      ss.clear()
+      ss.clear();
       getline(fin, temp, '\n');
       ss.str(temp);
       ss >> p;
-      ss.clear()
+      ss.clear();
       k.addItem(w, p);
     }
     if(algorithm_flag == 0){
