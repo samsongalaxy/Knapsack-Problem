@@ -58,7 +58,7 @@ void Knapsack::greedy1(){
     for(int j = 0; j < knapsack_vec.size(); j++){
       cout << "First value to be compared: " << temp.profit_weight_ratio << "\n";
       cout << "Second value to be compared: " << knapsack_vec[j].profit_weight_ratio << "\n";
-        if(temp.profit_weight_ratio > knapsack_vec[j].profit_weight_ratio){
+        if(temp.profit_weight_ratio < knapsack_vec[j].profit_weight_ratio){
           cout << "3\n";
           temp = knapsack_vec[j];
           cout << "4\n";
