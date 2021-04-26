@@ -30,9 +30,9 @@ int main(int argc, char **argv){
     k.setCapacity(n, c);
     for(int i = 0; i < n; i++){
       getline(fin, temp, ' ');
-      int w = stoi(temp);
+      double w = stoi(temp);
       getline(fin, temp, '\n');
-      int p = stoi(temp);
+      double p = stoi(temp);
       cout << "w is " << w << " and p is " << p << "\n";
       k.addItem(w, p, i+1);
     }
