@@ -90,7 +90,6 @@ void Knapsack::greedy1(int will_print){
 
 void Knapsack::greedy2(int will_print){
   clock_t start = clock();
-  vec_to_print.clear();
   Knapsack pmax = knapsack_vec[0];
   for(int i = 0; i < knapsack_vec.size(); i++) if((knapsack_vec[i].profit > pmax.profit) && (pmax.weight <= capacity)) pmax = knapsack_vec[i];
   if(will_print == 1){
