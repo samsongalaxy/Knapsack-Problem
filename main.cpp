@@ -36,10 +36,14 @@ int main(int argc, char **argv){
       //cout << "w is " << w << " and p is " << p << "\n";
       k.addItem(w, p, i+1);
     }
-    if(algorithm_flag == 0) k.greedy1();
-    else if(algorithm_flag == 1) k.greedy2();
+    if(algorithm_flag == 0) k.greedy1(1);
+    else if(algorithm_flag == 1){
+      k.greedy1(0);
+      k.greedy2(1);
+    }
     else if(algorithm_flag == 2){
-
+      k.greedy2(0);
+      k.backtracking();
     }
     else cout << "ERROR: INCORRECT algorithm_flag VALUE!\n";
     k.clearVec();

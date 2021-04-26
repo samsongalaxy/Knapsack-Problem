@@ -14,7 +14,8 @@ Knapsack::Knapsack(){
   num_of_items = 0;
   capacity = 0;
   location = 0;
-  profit_weight_ratio = 0;
+  profit_weight_ratio = 0
+  maxprofit = 0;
 }
 
 void Knapsack::openFile(string fn){
@@ -43,14 +44,12 @@ void Knapsack::clearVec(){
   knapsack_vec.clear();
 }
 
-void Knapsack::greedy1(){
+void Knapsack::greedy1(int will_print){
   /*cout << "Printing knapsack_vec:\n";
   for(int i = 0; i < knapsack_vec.size(); i++) cout << knapsack_vec[i].profit << " " << knapsack_vec[i].weight << "\n";*/
   clock_t start = clock();
-  ofstream fout;
-  fout.open(fileName, ios::app);
   int swap;
-  vector<int> vec_to_print;
+  vec_to_print.clear();
   Knapsack temp;
   for(int i = 0; i < knapsack_vec.size(); i++){
     temp = knapsack_vec[i];
@@ -70,7 +69,8 @@ void Knapsack::greedy1(){
   }
   /*cout << "Printing knapsack_vec in descending order:\n";
   for(int i = 0; i < knapsack_vec.size(); i++) cout << knapsack_vec[i].profit << " " << knapsack_vec[i].weight << "\n";*/
-  int current_weight = 0, maxprofit = 0;
+  int current_weight = 0;
+  maxprofit = 0;
   for(int i = 0; i < knapsack_vec.size(); i++){
     if((current_weight + knapsack_vec[i].weight) <= capacity){
       current_weight += knapsack_vec[i].weight;
@@ -78,18 +78,21 @@ void Knapsack::greedy1(){
       vec_to_print.push_back(knapsack_vec[i].location);
     }
   }
-  fout << num_of_items << " " << maxprofit << " " << ((double)clock()-start)/(double)CLOCKS_PER_SEC;
-  for(int i = 0; i < vec_to_print.size(); i++) fout << " " << vec_to_print[i];
-  fout << "\n";
-  fout.close();
+  if(will_print == 1){
+    ofstream fout;
+    fout.open(fileName, ios::app);
+    fout << num_of_items << " " << maxprofit << " " << ((double)clock()-start)/(double)CLOCKS_PER_SEC;
+    for(int i = 0; i < vec_to_print.size(); i++) fout << " " << vec_to_print[i];
+    fout << "\n";
+    fout.close();
+  }
 }
 
-void Knapsack::greedy2(){
+void Knapsack::greedy2(int will_print){
   clock_t start = clock();
-  ofstream fout;
-  fout.open(fileName, ios::app);
+
   int swap;
-  vector<int> vec_to_print;
+  vec_to_print.clear();
   Knapsack temp, pmax = knapsack_vec[0];
   for(int i = 0; i < knapsack_vec.size(); i++){
     temp = knapsack_vec[i];
@@ -106,7 +109,8 @@ void Knapsack::greedy2(){
     }
     if((knapsack_vec[i].profit > pmax.profit) && (pmax.weight <= capacity)) pmax = knapsack_vec[i];
   }
-  int current_weight = 0, maxprofit = 0;
+  int current_weight = 0;
+  maxprofit = 0;
   for(int i = 0; i < knapsack_vec.size(); i++){
     if((current_weight + knapsack_vec[i].weight) <= capacity){
       current_weight += knapsack_vec[i].weight;
@@ -114,11 +118,30 @@ void Knapsack::greedy2(){
       vec_to_print.push_back(knapsack_vec[i].location);
     }
   }
-  if(maxprofit > pmax.profit){
-    fout << num_of_items << " " << maxprofit << " " << ((double)clock()-start)/(double)CLOCKS_PER_SEC;
-    for(int i = 0; i < vec_to_print.size(); i++) fout << " " << vec_to_print[i];
-    fout << "\n";
+  if(will_print == 1){
+    ofstream fout;
+    fout.open(fileName, ios::app);
+    if(maxprofit > pmax.profit){
+      fout << num_of_items << " " << maxprofit << " " << ((double)clock()-start)/(double)CLOCKS_PER_SEC;
+      for(int i = 0; i < vec_to_print.size(); i++) fout << " " << vec_to_print[i];
+      fout << "\n";
+    }
+    else{
+      fout << "1 " << pmax.profit << " " << ((double)clock()-start)/(double)CLOCKS_PER_SEC << " " << pmax.location << "\n";
+      maxprofit = pmax.profit;
+    }
+    fout.close();
   }
-  else fout << "1 " << pmax.profit << ((double)clock()-start)/(double)CLOCKS_PER_SEC << " " << pmax.location << "\n";
+  else{
+    if(maxprofit < pmax.profit) maxprofit = pmax.profit;
+  }
+}
+
+void Knapsack::backtracking(){
+  clock_t start = clock();
+  ofstream fout;
+  fout.open(fileName, ios::app);
+
+
   fout.close();
 }
