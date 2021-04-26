@@ -32,6 +32,7 @@ int main(int argc, char **argv){
     ss.str(temp);
     ss >> c;
     ss.clear();
+    cout << "n is " << n << " and c is " << c << "\n";
     k.setCapacity(n, c);
     for(int i = 0; i < n; i++){
       int w, p;
@@ -43,6 +44,7 @@ int main(int argc, char **argv){
       ss.str(temp);
       ss >> p;
       ss.clear();
+      cout << "w is " << w << " and p is " << p << "\n";
       k.addItem(w, p);
     }
     if(algorithm_flag == 0){
