@@ -119,6 +119,6 @@ void Knapsack::greedy2(){
     for(int i = 0; i < vec_to_print.size(); i++) fout << " " << vec_to_print[i];
     fout << "\n";
   }
-  else fout << "1 " << pmax.profit << ((double)clock()-start)/(double)CLOCKS_PER_SEC << " " < pmax.location << "\n";
+  else fout << "1 " << pmax.profit << ((double)clock()-start)/(double)CLOCKS_PER_SEC << " " << pmax.location << "\n";
   fout.close();
 }
