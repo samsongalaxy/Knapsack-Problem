@@ -104,7 +104,7 @@ void Knapsack::greedy2(){
       knapsack_vec[swap] = knapsack_vec[i];
       knapsack_vec[i] = temp;
     }
-    if((knapsack_vec[i].profit > pmax.profit) && (pmax.weight <= capacity)) pmax = knapsack_vec;
+    if((knapsack_vec[i].profit > pmax.profit) && (pmax.weight <= capacity)) pmax = knapsack_vec[i];
   }
   int current_weight = 0, maxprofit = 0;
   for(int i = 0; i < knapsack_vec.size(); i++){
