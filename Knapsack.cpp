@@ -40,6 +40,8 @@ void Knapsack::clearVec(){
 }
 
 void Knapsack::greedy1(){
+  cout << "Printing knapsack_vec:\n";
+  for(int i = 0; i < knapsack_vec.size(); i++) cout << knapsack_vec[i].price << " " << knapsack_vec[i].weight << "\n";
   clock_t start = clock();
   ofstream fout;
   fout.open(fileName, ios::app);
