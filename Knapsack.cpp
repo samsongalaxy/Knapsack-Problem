@@ -9,11 +9,12 @@
 using namespace std;
 
 Knapsack::Knapsack(){
-  price = 0;
+  profit = 0;
   weight = 0;
   num_of_items = 0;
   capacity = 0;
   location = 0;
+  profit_weight_ratio = 0;
 }
 
 void Knapsack::openFile(string fn){
@@ -32,8 +33,9 @@ void Knapsack::setCapacity(int n, int c){
 void Knapsack::addItem(int w, int p, int l){
   Knapsack k;
   k.weight = w;
-  k.price = p;
+  k.profit = p;
   k.location = l;
+  k.profit_weight_ratio = p/w;
   knapsack_vec.push_back(k);
 }
 
@@ -43,7 +45,7 @@ void Knapsack::clearVec(){
 
 void Knapsack::greedy1(){
   cout << "Printing knapsack_vec:\n";
-  for(int i = 0; i < knapsack_vec.size(); i++) cout << knapsack_vec[i].price << " " << knapsack_vec[i].weight << "\n";
+  for(int i = 0; i < knapsack_vec.size(); i++) cout << knapsack_vec[i].profit << " " << knapsack_vec[i].weight << "\n";
   clock_t start = clock();
   ofstream fout;
   fout.open(fileName, ios::app);
@@ -54,9 +56,9 @@ void Knapsack::greedy1(){
     Knapsack temp = knapsack_vec[i];
     cout << "2\n";
     for(int j = 0; j < knapsack_vec.size(); j++){
-      cout << "First value to be compared: " << temp.price/temp.weight << "\n";
-      cout << "Second value to be compared: " << knapsack_vec[j].price/knapsack_vec[j].weight << "\n";
-        if((temp.price/temp.weight) > (knapsack_vec[j].price/knapsack_vec[j].weight)){
+      cout << "First value to be compared: " << temp.profit_weight_ratio << "\n";
+      cout << "Second value to be compared: " << knapsack_vec[j].profit_weight_ratio << "\n";
+        if(temp.profit_weight_ratio > knapsack_vec[j].profit_weight_ratio){
           cout << "3\n";
           temp = knapsack_vec[j];
           cout << "4\n";
@@ -70,12 +72,12 @@ void Knapsack::greedy1(){
     cout << "7\n";
   }
   cout << "Printing knapsack_vec in descending order:\n";
-  for(int i = 0; i < knapsack_vec.size(); i++) cout << knapsack_vec[i].price << " " << knapsack_vec[i].weight << "\n";
+  for(int i = 0; i < knapsack_vec.size(); i++) cout << knapsack_vec[i].profit << " " << knapsack_vec[i].weight << "\n";
   int current_weight = 0, current_profit = 0;
   for(int i = 0; i < knapsack_vec.size(); i++){
     if((current_weight + knapsack_vec[i].weight) <= capacity){
       current_weight += knapsack_vec[i].weight;
-      current_profit += knapsack_vec[i].price;
+      current_profit += knapsack_vec[i].profit;
       vec_to_print.push_back(knapsack_vec[i].location);
     }
   }
