@@ -81,7 +81,7 @@ void Knapsack::greedy1(int will_print){
   if(will_print == 1){
     ofstream fout;
     fout.open(fileName, ios::app);
-    fout << num_of_items << " " << maxprofit << " " << ((double)clock()-start)/(double)CLOCKS_PER_SEC;
+    fout << num_of_items << " " << maxprofit << " " << (double)clock()-start;
     for(int i = 0; i < vec_to_print.size(); i++) fout << " " << vec_to_print[i];
     fout << "\n";
     fout.close();
@@ -122,12 +122,12 @@ void Knapsack::greedy2(int will_print){
     ofstream fout;
     fout.open(fileName, ios::app);
     if(maxprofit > pmax.profit){
-      fout << num_of_items << " " << maxprofit << " " << ((double)clock()-start)/(double)CLOCKS_PER_SEC;
+      fout << num_of_items << " " << maxprofit << " " << (double)clock()-start;
       for(int i = 0; i < vec_to_print.size(); i++) fout << " " << vec_to_print[i];
       fout << "\n";
     }
     else{
-      fout << "1 " << pmax.profit << " " << ((double)clock()-start)/(double)CLOCKS_PER_SEC << " " << pmax.location << "\n";
+      fout << "1 " << pmax.profit << " " << (double)clock()-start << " " << pmax.location << "\n";
       maxprofit = pmax.profit;
     }
     fout.close();
