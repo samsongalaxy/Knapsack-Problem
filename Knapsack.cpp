@@ -49,16 +49,22 @@ void Knapsack::greedy1(){
   fout.open(fileName, ios::app);
   int swap;
   vector<int> vec_to_print;
+  cout << "1\n";
   for(int i = 0; i < knapsack_vec.size(); i++){
     Knapsack temp = knapsack_vec[i];
+    cout << "2\n";
     for(int j = 0; j < knapsack_vec.size(); j++){
         if((temp.price/temp.weight) > (knapsack_vec[j].price/knapsack_vec[j].weight)){
           temp = knapsack_vec[j];
+          cout << "3\n";
           swap = j;
+          cout << "4\n";
         }
     }
     knapsack_vec[swap] = knapsack_vec[i];
+    cout << "5\n";
     knapsack_vec[i] = temp;
+    cout << "6\n";
   }
   cout << "Printing knapsack_vec in descending order:\n";
   for(int i = 0; i < knapsack_vec.size(); i++) cout << knapsack_vec[i].price << " " << knapsack_vec[i].weight << "\n";
