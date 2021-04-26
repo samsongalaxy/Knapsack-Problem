@@ -30,7 +30,7 @@ void Knapsack::setCapacity(int n, int c){
   capacity = c;
 }
 
-void Knapsack::addItem(int w, int p, int l){
+void Knapsack::addItem(double w, double p, int l){
   Knapsack k;
   k.weight = w;
   k.profit = p;

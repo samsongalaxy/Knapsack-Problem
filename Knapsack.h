@@ -13,7 +13,7 @@ class Knapsack{
     Knapsack();
     void openFile(std::string fn);
     void setCapacity(int n, int c);
-    void addItem(int w, int p, int l);
+    void addItem(double w, double p, int l);
     void clearVec();
     void greedy1();
     int num_of_items, capacity, profit, weight, location;
