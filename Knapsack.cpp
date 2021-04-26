@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <ctime>
 #include "Knapsack.h"
 
 using namespace std;
@@ -32,4 +33,39 @@ void Knapsack::addItem(int w, int p){
   k.weight = w;
   k.price = p;
   knapsack_vec.pushback(k);
+}
+
+void Knapsack::clearVec(){
+  knapsack_vec.clear();
+}
+
+void Knapsack::greedy1(){
+  clock_t start = clock();
+  ofstream fout;
+  fout.open(fileName, ios::app);
+  int swap;
+  vector<int> vec_to_print;
+  for(int i = 0; i < num_of_items; i++){
+    Knapsack temp = knapsack_vec[i];
+    for(int j = 0; j < num_of_items; j++){
+        if((temp.price/temp.weight) > (knapsack_vec[j].price/knapsack_vec[j].weight)){
+          temp = knapsack_vec[j];
+          swap = j;
+        }
+    }
+    knapsack_vec[j] = knapsack_vec[i];
+    knapsack_vec[i] = temp;
+  }
+  int current_weight = 0, current_profit = 0;
+  for(int i = 0; i < num_of_items; i++){
+    if((current_weight + knapsack_vec[i].weight) <= capacity){
+      current_weight += knapsack_vec[i].weight;
+      current_profit += knapsack_vec[i].price;
+      vec_to_print.pushback(i);
+    }
+  }
+  fout << num_of_items << " " << current_profit << " " << ((double)clock()-start)/(double)CLOCKS_PER_SEC;
+  for(int i = 0; i < vec_to_print.size(); i++) fout << " " << vec_to_print[i];
+  fout << "\n";
+  fout.close();
 }
