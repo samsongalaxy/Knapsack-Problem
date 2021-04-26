@@ -14,7 +14,7 @@ Knapsack::Knapsack(){
   num_of_items = 0;
   capacity = 0;
   location = 0;
-  profit_weight_ratio = 0
+  profit_weight_ratio = 0;
   maxprofit = 0;
 }
 
