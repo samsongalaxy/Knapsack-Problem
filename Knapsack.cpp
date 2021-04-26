@@ -45,9 +45,9 @@ void Knapsack::greedy1(){
   fout.open(fileName, ios::app);
   int swap;
   vector<int> vec_to_print;
-  for(int i = 0; i < num_of_items; i++){
+  for(int i = 0; i < knapsack_vec.size(); i++){
     Knapsack temp = knapsack_vec[i];
-    for(int j = 0; j < num_of_items; j++){
+    for(int j = 0; j < knapsack_vec.size(); j++){
         if((temp.price/temp.weight) > (knapsack_vec[j].price/knapsack_vec[j].weight)){
           temp = knapsack_vec[j];
           swap = j;
@@ -56,8 +56,10 @@ void Knapsack::greedy1(){
     knapsack_vec[swap] = knapsack_vec[i];
     knapsack_vec[i] = temp;
   }
+  cout << "Printing knapsack_vec in descending order:\n";
+  for(int i = 0; i < knapsack_vec.size(); i++) cout << knapsack_vec[i] << "\n";
   int current_weight = 0, current_profit = 0;
-  for(int i = 0; i < num_of_items; i++){
+  for(int i = 0; i < knapsack_vec.size(); i++){
     if((current_weight + knapsack_vec[i].weight) <= capacity){
       current_weight += knapsack_vec[i].weight;
       current_profit += knapsack_vec[i].price;
