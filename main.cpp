@@ -24,28 +24,28 @@ int main(int argc, char **argv){
     string temp;
     stringstream ss;
     ss.clear();
-    getline(fin, temp, ' ');
+    getline(fin, n, ' ');
     ss.str(temp);
-    ss >> n;
+    //ss >> n;
     ss.clear();
-    getline(fin, temp, '\n');
+    getline(fin, c, '\n');
     ss.str(temp);
-    ss >> c;
+    //ss >> c;
     ss.clear();
     cout << "n is " << n << " and c is " << c << "\n";
     k.setCapacity(n, c);
     for(int i = 0; i < n; i++){
       int w, p;
-      getline(fin, temp, ' ');
+      getline(fin, w, ' ');
       ss.str(temp);
-      ss >> w;
+      //ss >> w;
       ss.clear();
-      getline(fin, temp, '\n');
+      getline(fin, p, '\n');
       ss.str(temp);
-      ss >> p;
+      //ss >> p;
       ss.clear();
       cout << "w is " << w << " and p is " << p << "\n";
-      k.addItem(w, p);
+      k.addItem(w, p, i+1);
     }
     if(algorithm_flag == 0){
       k.greedy1();

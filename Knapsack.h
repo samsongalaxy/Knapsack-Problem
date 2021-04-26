@@ -16,7 +16,7 @@ class Knapsack{
     void addItem(int w, int p);
     void clearVec();
     void greedy1();
-    int num_of_items, capacity, price, weight;
+    int num_of_items, capacity, price, weight, location;
     std::vector<Knapsack> knapsack_vec;
     std::string fileName;
 };
