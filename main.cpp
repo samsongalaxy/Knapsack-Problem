@@ -20,13 +20,28 @@ int main(int argc, char **argv){
   fin.open(argv[1]);
   while(!fin.eof()){
     int n, c;
-    getline(fin, n, ' ');
-    getline(fin, c, '\n');
+    string temp;
+    stringstream ss;
+    ss.clear()
+    getline(fin, temp, ' ');
+    ss.str(temp);
+    ss >> n;
+    ss.clear()
+    getline(fin, temp, '\n');
+    ss.str(temp);
+    ss >> c;
+    ss.clear();
     k.setCapacity(n, c);
     for(int i = 0; i < n; i++){
       int w, p;
-      getline(fin, w, ' ');
-      getline(fin, p, '\n');
+      getline(fin, temp, ' ');
+      ss.str(temp);
+      ss >> w;
+      ss.clear()
+      getline(fin, temp, '\n');
+      ss.str(temp);
+      ss >> p;
+      ss.clear()
       k.addItem(w, p);
     }
     if(algorithm_flag == 0){

@@ -11,7 +11,7 @@
 class Knapsack{
   public:
     Knapsack();
-    void openFile(string fn);
+    void openFile(std::string fn);
     void setCapacity(int n, int c);
     void addItem(int w, int p);
     void clearVec();
