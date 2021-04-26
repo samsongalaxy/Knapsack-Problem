@@ -90,34 +90,9 @@ void Knapsack::greedy1(int will_print){
 
 void Knapsack::greedy2(int will_print){
   clock_t start = clock();
-
-  int swap;
   vec_to_print.clear();
-  Knapsack temp, pmax = knapsack_vec[0];
-  for(int i = 0; i < knapsack_vec.size(); i++){
-    temp = knapsack_vec[i];
-    swap = i;
-    for(int j = i + 1; j < knapsack_vec.size(); j++){
-        if(temp.profit_weight_ratio < knapsack_vec[j].profit_weight_ratio){
-          temp = knapsack_vec[j];
-          swap = j;
-        }
-    }
-    if(swap != i){
-      knapsack_vec[swap] = knapsack_vec[i];
-      knapsack_vec[i] = temp;
-    }
-    if((knapsack_vec[i].profit > pmax.profit) && (pmax.weight <= capacity)) pmax = knapsack_vec[i];
-  }
-  int current_weight = 0;
-  maxprofit = 0;
-  for(int i = 0; i < knapsack_vec.size(); i++){
-    if((current_weight + knapsack_vec[i].weight) <= capacity){
-      current_weight += knapsack_vec[i].weight;
-      maxprofit += knapsack_vec[i].profit;
-      vec_to_print.push_back(knapsack_vec[i].location);
-    }
-  }
+  Knapsack pmax = knapsack_vec[0];
+  for(int i = 0; i < knapsack_vec.size(); i++) if((knapsack_vec[i].profit > pmax.profit) && (pmax.weight <= capacity)) pmax = knapsack_vec[i];
   if(will_print == 1){
     ofstream fout;
     fout.open(fileName, ios::app);

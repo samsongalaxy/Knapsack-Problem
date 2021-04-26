@@ -42,6 +42,7 @@ int main(int argc, char **argv){
       k.greedy2(1);
     }
     else if(algorithm_flag == 2){
+      k.greedy1(0);
       k.greedy2(0);
       k.backtracking();
     }
