@@ -20,34 +20,18 @@ int main(int argc, char **argv){
   ifstream fin;
   fin.open(argv[1]);
   while(!fin.eof()){
-    //int n, c;
     string temp;
-    stringstream ss;
-    ss.clear();
     getline(fin, temp, ' ');
-    ss.str(temp);
-    //ss >> n;
-    ss.clear();
     cout << "n should be " << temp << "\n";
     int n = stoi(temp);
     getline(fin, temp, '\n');
-    ss.str(temp);
-    //ss >> c;
-    ss.clear();
     int c = stoi(temp);
     cout << "n is " << n << " and c is " << c << "\n";
     k.setCapacity(n, c);
     for(int i = 0; i < n; i++){
-      //int w, p;
       getline(fin, temp, ' ');
-      ss.str(temp);
-      //ss >> w;
-      ss.clear();
       int w = stoi(temp);
       getline(fin, temp, '\n');
-      ss.str(temp);
-      //ss >> p;
-      ss.clear();
       int p = stoi(temp);
       cout << "w is " << w << " and p is " << p << "\n";
       k.addItem(w, p, i+1);
