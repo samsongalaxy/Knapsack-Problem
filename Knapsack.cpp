@@ -154,7 +154,7 @@ double Knapsack::KWF2(int i, int curr_weight, int curr_profit){
   return bound;
 }
 
-boolean Knapsack::promising(int i, int curr_weight, int curr_profit){
+bool Knapsack::promising(int i, int curr_weight, int curr_profit){
   if(curr_weight >= capacity) return false;
   double bound = KWF2(i, curr_weight, curr_profit);
   return (bound > maxprofit);
