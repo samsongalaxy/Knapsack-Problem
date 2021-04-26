@@ -28,6 +28,7 @@ int main(int argc, char **argv){
     ss.str(temp);
     //ss >> n;
     ss.clear();
+    cout << "n should be " << temp << "\n";
     int n = stoi(temp);
     getline(fin, temp, '\n');
     ss.str(temp);
