@@ -14,9 +14,9 @@ int main(int argc, char **argv){
   cout << "Beginning test...\n";
   Knapsack k;
   k.openFile(argv[2]);
-  cout << "algorithm_flag should be " << argv[3] << "\n";
+  //cout << "algorithm_flag should be " << argv[3] << "\n";
   int algorithm_flag = stoi(argv[3]);
-  cout << "algorithm_flag is " << algorithm_flag << "\n";
+  //cout << "algorithm_flag is " << algorithm_flag << "\n";
   ifstream fin;
   fin.open(argv[1]);
   while(!fin.eof()){
