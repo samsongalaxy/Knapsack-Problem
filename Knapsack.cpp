@@ -13,6 +13,7 @@ Knapsack::Knapsack(){
   weight = 0;
   num_of_items = 0;
   capacity = 0;
+  location = 0;
 }
 
 void Knapsack::openFile(string fn){
@@ -28,10 +29,11 @@ void Knapsack::setCapacity(int n, int c){
   capacity = c;
 }
 
-void Knapsack::addItem(int w, int p){
+void Knapsack::addItem(int w, int p, int l){
   Knapsack k;
   k.weight = w;
   k.price = p;
+  k.location = l;
   knapsack_vec.push_back(k);
 }
 
@@ -65,7 +67,7 @@ void Knapsack::greedy1(){
     if((current_weight + knapsack_vec[i].weight) <= capacity){
       current_weight += knapsack_vec[i].weight;
       current_profit += knapsack_vec[i].price;
-      vec_to_print.push_back(i);
+      vec_to_print.push_back(knapsack_vec[i].location);
     }
   }
   fout << num_of_items << " " << current_profit << " " << ((double)clock()-start)/(double)CLOCKS_PER_SEC;
