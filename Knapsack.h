@@ -15,7 +15,7 @@ class Knapsack{
     void setCapacity(int n, int c);
     void addItem(double w, double p, int l);
     void clearVec();
-    void greedy1(will_print);
+    void greedy1(int will_print);
     void greedy2(int will_print);
     void backtracking();
     int num_of_items, capacity, profit, weight, location, maxprofit;
