@@ -108,7 +108,11 @@ void Knapsack::greedy2(int will_print){
     fout.close();
   }
   else{
-    if(maxprofit < pmax.profit) maxprofit = pmax.profit;
+    if(maxprofit < pmax.profit){
+      maxprofit = pmax.profit;
+      bestset.clear();
+      bestset.push_back(pmax);
+    }
   }
 }
 
@@ -116,8 +120,15 @@ void Knapsack::backtracking(){
   clock_t start = clock();
   ofstream fout;
   fout.open(fileName, ios::app);
+  vector<int> greedybestset = bestset;
+  int greedymax = maxprofit;
   bt_helper(0, capacity, 0);
   fout << num_of_items << " " << maxprofit << " " << (double)clock()-start;
+  if(greedymax > maxprofit){
+    maxprofit = greedymax;
+    bestset.clear();
+    bestset = greedybestset;
+  }
   for(int i = 0; i < bestset.size(); i++) fout << " " << bestset[i];
   fout << "\n";
   fout.close();

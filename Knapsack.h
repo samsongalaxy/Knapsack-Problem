@@ -25,7 +25,7 @@ class Knapsack{
     double profit_weight_ratio;
     std::vector<Knapsack> knapsack_vec;
     std::string fileName;
-  std::vector<int> bestset, temp;
+    std::vector<int> bestset, temp;
 };
 
 #endif
