@@ -130,9 +130,9 @@ void Knapsack::bt_helper(int i, int curr_weight, int curr_profit){
   }
   if(promising(i, curr_weight, curr_profit)){
     include[i+1] = "yes";
-    bt_helper(i+1, curr_weight + knapsack_vec[i+1].weight, curr_profit + knapsack_vec[i].profit);
+    KWF2(i+1, curr_weight + knapsack_vec[i+1].weight, curr_profit + knapsack_vec[i].profit);
     include[i+1] = "no";
-    bt_helper(i+1, curr_weight, curr_profit);
+    KWF2(i+1, curr_weight, curr_profit);
   }
 }
 
