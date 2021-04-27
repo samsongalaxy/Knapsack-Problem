@@ -118,7 +118,6 @@ void Knapsack::backtracking(){
 }
 
 void Knapsack::bt_helper(int i, int max, int p){
-  //vector<int> temp;
   for(int j = i; j < knapsack_vec.size(); j++) {
     if(max > 0){
       if(knapsack_vec[j].weight <= max){
@@ -132,8 +131,8 @@ void Knapsack::bt_helper(int i, int max, int p){
       else{
         if(promising){
           bestset.clear();
-          move(temp.begin(), temp.end(), back_inserter(bestset));
-          //for(int k = 0; k < temp.size(); k++) bestset.push_back(temp[k]);
+          //move(temp.begin(), temp.end(), back_inserter(bestset));
+          for(int k = 0; k < temp.size(); k++) bestset.push_back(temp[k]);
           promising = false;
         }
         temp.clear();
@@ -143,8 +142,8 @@ void Knapsack::bt_helper(int i, int max, int p){
     else{
       if(promising){
         bestset.clear();
-        move(temp.begin(), temp.end(), back_inserter(bestset));
-        //for(int k = 0; k < temp.size(); k++) bestset.push_back(temp[k]);
+        //move(temp.begin(), temp.end(), back_inserter(bestset));
+        for(int k = 0; k < temp.size(); k++) bestset.push_back(temp[k]);
         promising = false;
       }
       temp.clear();
