@@ -137,7 +137,7 @@ void Knapsack::bt_helper(int i, int max, int p){
   for(int j = i; j < knapsack_vec.size(); j++) {
     if(max > 0){
       if(knapsack_vec[j].weight <= max){
-        cout << "adding " << knapsack_vec[j].location << " to temp\n";
+        //cout << "adding " << knapsack_vec[j].location << " to temp\n";
         temp.push_back(knapsack_vec[j].location);
         if((p + knapsack_vec[j].profit) >= maxprofit){
           maxprofit = p + knapsack_vec[j].profit;
