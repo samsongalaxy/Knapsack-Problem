@@ -23,9 +23,9 @@ class Knapsack{
     bool promising;
     int num_of_items, capacity, profit, weight, location, maxprofit;
     double profit_weight_ratio;
-    std::vector<Knapsack> knapsack_vec, temp;
+    std::vector<Knapsack> knapsack_vec;
     std::string fileName;
-    std::vector<int> bestset;
+  std::vector<int> bestset, temp;
 };
 
 #endif
