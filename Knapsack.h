@@ -20,15 +20,12 @@ class Knapsack{
     void greedy2(int will_print);
     void backtracking();
     void bt_helper(int i, int max, int p);
-    //double KWF2(int i, int curr_weight, int curr_profit);
-    //bool promising(int i, int curr_weight, int curr_profit);
     bool promising;
     int num_of_items, capacity, profit, weight, location, maxprofit, numbest, iter, curr_weight, curr_profit;
     double profit_weight_ratio;
     std::vector<Knapsack> knapsack_vec;
     std::string fileName;
-    std::vector<int> bestset, temp;
-    std::vector<std::string> include;
+    std::vector<int> bestset;
 };
 
 #endif
