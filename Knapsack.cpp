@@ -120,6 +120,8 @@ void Knapsack::backtracking(){
 }
 
 void Knapsack::bt_helper(int i, int curr_weight, int curr_profit){
+  cout << "curr_weight is " << curr_weight << " and capacity is " << capacity << "\n";
+  cout << "curr_profit is " << curr_profit << " and max profit is " << maxprofit << "\n";
   if((curr_weight <= capacity) && (curr_profit > maxprofit)){
     maxprofit = curr_profit;
     numbest = i;

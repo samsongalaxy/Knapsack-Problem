@@ -22,18 +22,18 @@ int main(int argc, char **argv){
   while(!fin.eof()){
     string temp;
     getline(fin, temp, ' ');
-    cout << "n should be " << temp << "\n";
+    //cout << "n should be " << temp << "\n";
     int n = stoi(temp);
     getline(fin, temp, '\n');
     int c = stoi(temp);
-    cout << "n is " << n << " and c is " << c << "\n";
+    //cout << "n is " << n << " and c is " << c << "\n";
     k.setCapacity(n, c);
     for(int i = 0; i < n; i++){
       getline(fin, temp, ' ');
       double w = stoi(temp);
       getline(fin, temp, '\n');
       double p = stoi(temp);
-      cout << "w is " << w << " and p is " << p << "\n";
+      //cout << "w is " << w << " and p is " << p << "\n";
       k.addItem(w, p, i+1);
     }
     if(algorithm_flag == 0) k.greedy1(1);
@@ -46,7 +46,10 @@ int main(int argc, char **argv){
       k.greedy2(0);
       k.backtracking();
     }
-    else cout << "ERROR: INCORRECT algorithm_flag VALUE!\n";
+    else{
+      cout << "ERROR: INCORRECT algorithm_flag VALUE!\n";
+      return 0;
+    }
     k.clearVec();
   }
   cout << "Test complete! Results are in " << argv[2] << "\n";
