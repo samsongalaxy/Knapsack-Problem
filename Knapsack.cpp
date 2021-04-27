@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 #include <ctime>
-#include <iterator>
 #include "Knapsack.h"
 
 using namespace std;
@@ -148,8 +147,7 @@ void Knapsack::bt_helper(int i, int max, int p){
       else{
         if(promising){
           bestset.clear();
-          move(temp.begin(), temp.end(), back_inserter(bestset));
-          //for(int k = 0; k < temp.size(); k++) bestset.push_back(temp[k] + 1);
+          for(int k = 0; k < temp.size(); k++) bestset.push_back(temp[k] + 1);
           promising = false;
         }
         temp.clear();
@@ -159,8 +157,7 @@ void Knapsack::bt_helper(int i, int max, int p){
     else{
       if(promising){
         bestset.clear();
-        move(temp.begin(), temp.end(), back_inserter(bestset));
-        //for(int k = 0; k < temp.size(); k++) bestset.push_back(temp[k] + 1);
+        for(int k = 0; k < temp.size(); k++) bestset.push_back(temp[k] + 1);
         promising = false;
       }
       temp.clear();

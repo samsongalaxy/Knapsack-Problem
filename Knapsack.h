@@ -7,7 +7,6 @@
 #include <string>
 #include <vector>
 #include <ctime>
-#include <iterator>
 
 class Knapsack{
   public:
