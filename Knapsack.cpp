@@ -118,7 +118,7 @@ void Knapsack::backtracking(){
 }
 
 void Knapsack::bt_helper(int i, int max, int p){
-  vector<int> temp;
+  //vector<int> temp;
   for(int j = i; j < knapsack_vec.size(); j++) {
     if(max > 0){
       if(knapsack_vec[j].weight <= max){
