@@ -21,7 +21,7 @@ class Knapsack{
     void backtracking();
     void bt_helper(int i, int max, int p);
     bool promising;
-    int num_of_items, capacity, profit, weight, location, maxprofit, numbest, iter, curr_weight, curr_profit;
+    int num_of_items, capacity, profit, weight, location, maxprofit;
     double profit_weight_ratio;
     std::vector<Knapsack> knapsack_vec;
     std::string fileName;

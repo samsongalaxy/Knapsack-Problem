@@ -17,10 +17,6 @@ Knapsack::Knapsack(){
   location = 0;
   profit_weight_ratio = 0;
   maxprofit = 0;
-  numbest = 0;
-  iter = 0;
-  curr_profit = 0;
-  curr_weight = 0;
 }
 
 void Knapsack::openFile(string fn){
@@ -114,9 +110,6 @@ void Knapsack::backtracking(){
   clock_t start = clock();
   ofstream fout;
   fout.open(fileName, ios::app);
-  numbest = 0;
-  for(int i = 0; i < num_of_items + 1; i++) include.push_back("no");
-  iter = 0, curr_profit = 0, curr_weight = 0;
   bt_helper(0, capacity, 0);
   fout << num_of_items << " " << maxprofit << " " << (double)clock()-start;
   for(int i = 0; i < bestset.size(); i++) fout << " " << bestset[i];
