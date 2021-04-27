@@ -85,9 +85,9 @@ void Knapsack::greedy1(int will_print){
 
 void Knapsack::greedy2(int will_print){
   clock_t start = clock();
-  Knapsack pmax = knapsack_vec[0];
+  Knapsack pmax;
   for(int i = 0; i < knapsack_vec.size(); i++){
-    cout << "knapsack_vec[i].profit is " << knapsack_vec[i].weight << " and pmax.profit is " << pmax.profit << "\n";
+    //cout << "knapsack_vec[i].profit is " << knapsack_vec[i].profit << " and pmax.profit is " << pmax.profit << "\n";
     if(knapsack_vec[i].profit > pmax.profit){
       //cout << "knapsack_vec[i].weight is " << knapsack_vec[i].weight << " and capacity is " << capacity << "\n";
       if(knapsack_vec[i].weight <= capacity) pmax = knapsack_vec[i];
