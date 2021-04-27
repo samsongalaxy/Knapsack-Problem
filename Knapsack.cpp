@@ -141,25 +141,25 @@ void Knapsack::bt_helper(int i, int max, int p){
         temp.push_back(knapsack_vec[j].location);
         if((p + knapsack_vec[j].profit) >= maxprofit){
           maxprofit = p + knapsack_vec[j].profit;
-          done = true;
+          solution = true;
         }
       }
       if((j + 1) < knapsack_vec.size()) bt_helper(j+1, max - knapsack_vec[j].weight, p + knapsack_vec[j].profit);
       else{
-        if(done){
+        if(solution){
           bestset.clear();
           for(int k = 0; k < temp.size(); k++) bestset.push_back(temp[k]);
-          done = false;
+          solution = false;
         }
         temp.clear();
         return;
       }
     }
     else{
-      if(done){
+      if(solution){
         bestset.clear();
         for(int k = 0; k < temp.size(); k++) bestset.push_back(temp[k]);
-        done = false;
+        solution = false;
       }
       temp.clear();
       return;
