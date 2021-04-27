@@ -111,7 +111,7 @@ void Knapsack::greedy2(int will_print){
     if(maxprofit < pmax.profit){
       maxprofit = pmax.profit;
       bestset.clear();
-      bestset.push_back(pmax);
+      bestset.push_back(pmax.location);
     }
   }
 }
