@@ -101,7 +101,7 @@ void Knapsack::greedy2(int will_print){
       fout << "\n";
     }
     else{
-      fout << "1 " << pmax.profit << " " << (double)clock()-start << " " << pmax.location << "\n";
+      fout << num_of_items << " " << pmax.profit << " " << (double)clock()-start << " " << pmax.location << "\n";
       maxprofit = pmax.profit;
     }
     fout.close();
