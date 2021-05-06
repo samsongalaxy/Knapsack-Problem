@@ -172,7 +172,7 @@ void Knapsack::dynamicprogramming(){
   clock_t start = clock();
   ofstream fout;
   fout.open(fileName, ios::app);
-  int P[1][capacity];
+  int P[2][capacity];
   int maxprofit = 0;
   for(int c = 0; c < capacity; c++) P[0][c] = 0;
   for(int i = 1; i < num_of_items; i++){
