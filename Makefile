@@ -1,7 +1,7 @@
 all:	program4
 
-submission:	main.o Knapsack.o
-	g++  main.o Knapsack.o -o submission
+program4:	main.o Knapsack.o
+	g++  main.o Knapsack.o -o program4
 
 main.o:	main.cpp
 	g++ -c main.cpp -o main.o
