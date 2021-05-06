@@ -46,6 +46,10 @@ int main(int argc, char **argv){
       k.greedy2(0);
       k.backtracking();
     }
+    //*** DYNAMIC PROGRAMMING CODE STARTS HERE ***
+    else if(algorithm_flag == 3){
+      k.dynamicprogramming();
+    }
     else{
       cout << "ERROR: INCORRECT algorithm_flag VALUE!\n";
       return 0;

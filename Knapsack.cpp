@@ -166,3 +166,21 @@ void Knapsack::bt_helper(int i, int max, int p){
     }
   }
 }
+
+//*** DYNAMIC PROGRAMMING CODE STARTS HERE ***
+void Knapsack::dynamicprogramming(){
+  clock_t start = clock();
+  int P[1][num_of_items];
+  int maxprofit = 0;
+  for(int c = 0; c < capacity; c++) P[0][c] = 0;
+  for(int i = 1; i < num_of_items; i++){
+    P[i%2][0] = 0;
+    for(int c = 1; c < capacity; c++){ //items in columns 1 to capacity
+      if((knapsack_vec[i].weight < capacity) && ((P[(i-1)%2][c-knapsack_vec[i].weight] + knapsack_vec[i].profit) > P[(i-1)%2][c])) P[i%2][c] = P[(i-1)%2][c-knapsack_vec[i].weight] + knapsack_vec[i].profit;
+      else P[i%2][c] = P[(i-1)%2][c];
+      if(P[i%2][c] > maxprofit) maxprofit = P[i%2][c];
+    }
+  }
+  fout << num_of_items << " " << maxprofit << " " << (double)clock()-start << "\n";
+
+}

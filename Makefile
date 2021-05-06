@@ -1,4 +1,4 @@
-all:	submission
+all:	program4
 
 submission:	main.o Knapsack.o
 	g++  main.o Knapsack.o -o submission
@@ -10,4 +10,4 @@ Knapsack.o:	Knapsack.cpp
 	g++ -c Knapsack.cpp -o Knapsack.o
 
 clean:
-	rm -f *.o submission
+	rm -f *.o program4
