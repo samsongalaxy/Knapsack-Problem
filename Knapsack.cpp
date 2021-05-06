@@ -170,6 +170,8 @@ void Knapsack::bt_helper(int i, int max, int p){
 //*** DYNAMIC PROGRAMMING CODE STARTS HERE ***
 void Knapsack::dynamicprogramming(){
   clock_t start = clock();
+  ofstream fout;
+  fout.open(fileName, ios::app);
   int P[1][num_of_items];
   int maxprofit = 0;
   for(int c = 0; c < capacity; c++) P[0][c] = 0;
@@ -182,5 +184,5 @@ void Knapsack::dynamicprogramming(){
     }
   }
   fout << num_of_items << " " << maxprofit << " " << (double)clock()-start << "\n";
-
+  fout.close();
 }
