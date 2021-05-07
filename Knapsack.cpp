@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <ctime>
+#include <bits/stdc++.h>
 #include "Knapsack.h"
 
 using namespace std;
