@@ -179,7 +179,7 @@ void Knapsack::dynamicprogramming(){
     //P[i%2][0] = 0;
     for(int c = 0; c < capacity; c++) P[i%2][c] = 0;
     for(int c = 1; c < capacity; c++){ //items in columns 1 to capacity
-      if((knapsack_vec[i].weight < capacity) && ((P[(i-1)%2][c-knapsack_vec[i].weight] + knapsack_vec[i].profit) > P[(i-1)%2][c])) P[i%2][c] = P[(i-1)%2][c-knapsack_vec[i].weight] + knapsack_vec[i].profit;
+      if((knapsack_vec[i].weight < c) && ((P[(i-1)%2][c-knapsack_vec[i].weight] + knapsack_vec[i].profit) > P[(i-1)%2][c])) P[i%2][c] = P[(i-1)%2][c-knapsack_vec[i].weight] + knapsack_vec[i].profit;
       else P[i%2][c] = P[(i-1)%2][c];
       if(P[i%2][c] > maxprofit) maxprofit = P[i%2][c];
     }
