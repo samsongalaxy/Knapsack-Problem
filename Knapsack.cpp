@@ -173,22 +173,19 @@ void Knapsack::dynamicprogramming(){
   ofstream fout;
   fout.open(fileName, ios::app);
   int P[2][capacity];
-  int maxprofit = 0;
   for(int c = 0; c < capacity; c++) P[0][c] = 0;
   for(int i = 1; i <= num_of_items; i++){
-    //P[i%2][0] = 0;
     for(int c = 0; c < capacity; c++) P[i%2][c] = 0;
     for(int c = 1; c <= capacity; c++){ //items in columns 1 to capacity
-      //if((knapsack_vec[i].weight < c) && ((P[(i-1)%2][c-knapsack_vec[i].weight] + knapsack_vec[i].profit) > P[(i-1)%2][c])) P[i%2][c] = P[(i-1)%2][c-knapsack_vec[i].weight] + knapsack_vec[i].profit;
       if(knapsack_vec[i-1].weight < c) P[i%2][c] = max(knapsack_vec[i-1].profit + P[(i-1)%2][c-knapsack_vec[i-1].weight], P[(i-1)%2][c]);
       else P[i%2][c] = P[(i-1)%2][c];
-      //if(P[i%2][c] > maxprofit) maxprofit = P[i%2][c];
     }
   }
   fout << num_of_items << " " << P[num_of_items%2][capacity] << " " << (double)clock()-start << "\n";
   fout.close();
 }
 
-int Knapsack::max(int a, int b){
-  return (a > b) ? a : b;
+int Knapsack::max(int x, int y){
+  if(x > y) return x;
+  return y;
 }
