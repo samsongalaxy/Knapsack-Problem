@@ -20,6 +20,7 @@ class Knapsack{
     void backtracking();
     void bt_helper(int i, int max, int p);
     void dynamicprogramming(); //function for program 4
+    int max(int a, int b);
     bool solution;
     int num_of_items, capacity, profit, weight, location, maxprofit;
     double profit_weight_ratio;
